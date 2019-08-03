@@ -6,5 +6,4 @@
     <welcome-file-list>
         <welcome-file>/views/login.html</welcome-file>
     </welcome-file-list>
-
 </web-app>
