@@ -1,10 +1,7 @@
 package com.JavaWebDemo.database;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Database class
@@ -40,7 +37,7 @@ public class Database {
     public static boolean hasData(String userName, String password) {
         var datas = getData();
         for (Map<String, String> data : datas) {
-            if (data.get(userName) == password) {
+            if (data.get(userName).equals(password) && data.get(userName) != null) {
                 return true;
             }
         }

@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
 /**
  * LoginServlet class
@@ -21,6 +23,8 @@ public class LoginServlet extends HttpServlet {
     private static final String UTF8ENCODING = "utf-8";
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Vector<String> vector;
+        var list = new ArrayList<String>();
         request.setCharacterEncoding(UTF8ENCODING);
         response.setCharacterEncoding(UTF8ENCODING);
         var userName = request.getParameter("userName");
@@ -29,12 +33,13 @@ public class LoginServlet extends HttpServlet {
         if (Database.hasData(userName, password)) {
             resultJsonMap.put("\"code\"", "\"200\"");
             resultJsonMap.put("\"message\"", "\"登录成功\"");
+            response.sendRedirect("/JavaWebDemo/views/success.html");
         } else {
             resultJsonMap.put("\"code\"", "\"5-0\"");
             resultJsonMap.put("\"message\"", "\"登录失败\"");
+            response.sendRedirect("/JavaWebDemo/views/failure.html");
         }
         var jsonObject = resultJsonMap.toString().replace('=', ':');
-        response.getWriter().append(jsonObject);
     }
 
     @Override
