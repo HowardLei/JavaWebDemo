@@ -20,7 +20,7 @@ import java.util.Vector;
  */
 @WebServlet(name = "LoginServlet", description = "登录的Servlet", urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
-    private static final String UTF8ENCODING = "utf-8";
+    public static final String UTF8ENCODING = "utf-8";
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Vector<String> vector;
